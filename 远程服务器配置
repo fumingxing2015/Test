@@ -21,3 +21,5 @@
   service smb restart
   或
   systemctl restart smb.service
+8.samba 添加用户
+  smbpasswd -a linuxsir
