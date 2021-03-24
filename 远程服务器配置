@@ -1,0 +1,23 @@
+1.关闭selinux
+  setenforce 0
+2.关闭iptables
+  service iptables stop
+3.rpm -qa | grep samba检查是否已经安装,未安装：
+  yum -y install samba
+4.设置配置文件smb.conf
+  vim /etc/samba/smb.conf
+  [share] #此处是模块名称，名字随便起
+    comment = blog.whsir.com #注释
+    path = /usr/share #指定目录
+    browseable = yes
+    guest ok = yes #是否可浏览，是否可被所有用户看到
+    writable = yes #是否可写（全局可写）
+    create mask = 0644 #新建文件权限644
+    directory mask = 0755 #新建目录权限755
+5.创建共享目录
+6.设置文件夹权限
+  chmod 777 xxxx
+7.重启samba
+  service smb restart
+  或
+  systemctl restart smb.service
